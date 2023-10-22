@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import {Server as websocketserver} from "socket.io";
 import http from "http";
+import Notes from "./Notes";
 
 const app = express();
 const Server = http.createServer(app)
@@ -10,11 +11,11 @@ const io = new websocketserver(Server)
 app.use(express.static(path.join(__dirname, "public")));
 
 io.on('connection', (socket)=>{
-    console.log('conect socket');
+    console.log('conect socket: ', socket.id);
     socket.emit("ping")
 
-    socket.on('pong', ()=>{
-        console.log("pong");
+    socket.on('client:newNote', (data)=>{
+        console.log(new Notes(data.title, data.description));
     })
 })
 
