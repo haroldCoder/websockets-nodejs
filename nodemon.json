@@ -1,0 +1,6 @@
+{
+    "watch": ["src/public", "src"],
+    "ext": ".html, .ts, .css, .js",
+    "ignore": ["dist"],
+    "exec": "xcopy /E /I /Y src\\public dist\\public && npx tsc && node ./dist/index.js --exec babel-node"
+}
