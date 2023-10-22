@@ -10,4 +10,8 @@ notesform.addEventListener("submit", (e)=>{
         title: title.value,
         description: description.value
     })
+
+    socket.on('server:notes', (data)=>{
+        appendNotes(data);
+    })
 })
