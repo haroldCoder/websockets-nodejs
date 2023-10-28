@@ -4,6 +4,7 @@ import {Server as websocketserver} from "socket.io";
 import http from "http";
 import Notes from "./Notes";
 import {v4} from "uuid"
+import {connect} from "./connection/connection"
 
 const app = express();
 const Server = http.createServer(app)
@@ -26,5 +27,5 @@ io.on('connection', (socket)=>{
 
 Server.listen(1000, ()=>{
     console.log(`server on port 1000`);
-    
+    connect;
 })
