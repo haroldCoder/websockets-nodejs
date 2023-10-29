@@ -1,12 +1,14 @@
 import mysql from 'mysql2';
+import dotenv from "dotenv";
 
-export const connect = mysql.createPool("mysql://uvij9d1qpneofvnd:DaDPt0b0c70abp18er8b@bmvhzelg5sar6mezsouj-mysql.services.clever-cloud.com:3306/bmvhzelg5sar6mezsouj");
+dotenv.config()
 
-connect.on('connection', ()=>{
-    try{
-       console.log('DB Connect'); 
-    }
-    catch(err){
+export const connect = mysql.createConnection(process.env.MYSQL_URI!);
+
+connect.connect((err)=>{
+    if(err){
         console.log(err);
+        throw err;
     }
+    console.log('DB conect');
 })
