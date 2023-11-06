@@ -7,17 +7,20 @@ class Notesql extends Notes{
     }
 
     getNotes = async()  =>{
-        const notes = await connect.query(`SELECT * FROM notes`);
+        const notes = (await (await connect).query(`SELECT * FROM notes`))[0];
         return notes;
     }
 
     addNote = async(title: string, description: string) =>{
-        await connect.query(`INSERT INTO notes(title, description) VALUES(${title}, ${description})`, (err, result)=>{
-            if(err){
-                return err
-            }
-        })
-        return "note added"
+        try {
+            const query = `INSERT INTO notes (title, description) VALUES (?, ?)`;
+            const [result] = await connect.execute(query, [title, description]);
+        
+            return "note added";
+          } catch (error) {
+            console.error(error);
+            throw error;
+          }
     }
 }
 

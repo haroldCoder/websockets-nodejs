@@ -15,3 +15,11 @@ notesform.addEventListener("submit", (e)=>{
         appendNotes(data);
     })
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    socket.on('server:notes', (data) => {
+      appendNotes(data);
+      console.log(data);
+    });
+    // Otro código relacionado con el documento
+});

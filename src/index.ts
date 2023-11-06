@@ -18,6 +18,8 @@ io.on('connection', async(socket)=>{
     console.log('conect socket: ', socket.id);
     socket.emit("ping")
     const notes = await new Notesql().getNotes();
+    console.log(notes);
+    socket.emit('server:notes', notes)
 
     socket.on('client:newNote', (data)=>{
         new Notesql().addNote(data.title, data.description);
