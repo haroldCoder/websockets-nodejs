@@ -1,5 +1,4 @@
 import Clients from "./Clients";
-import Notes from "./Clients";
 import {connect} from "./connection/connection"
 
 class Clientsql extends Clients{
@@ -8,8 +7,8 @@ class Clientsql extends Clients{
     }
 
     getClientes = async()  =>{
-        const notes = (await (await connect).query(`SELECT * FROM clientes`))[0];
-        return notes;
+        const clients = (await (await connect).query(`SELECT * FROM clientes`))[0];
+        return clients;
     }
 
     addClientes = async(apellido: string, direccion: string, email: string, Fecha: string, nombre: string, Telefono: number) =>{
