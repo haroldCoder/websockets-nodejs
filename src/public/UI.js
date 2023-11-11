@@ -1,6 +1,5 @@
 const clientsList = document.querySelector("#clients");
 
-<<<<<<< HEAD
 const appendNotes = (clients) => {
     console.log(clients);
     clientsList.innerHTML = ``;
@@ -32,42 +31,12 @@ const appendNotes = (clients) => {
                     <td>${nts.Nombre}</td>
                     <td>${nts.Apellido}</td>
                     <td>${nts.Email}</td>
-                    <td>${nts.Direccion}</td>
+                    <td>${nts.Dirreccion}</td>
                     <td>${nts.FechaVenc}</td>
                     <td>${nts.Telefono}</td>
                 </tr>
             `;
         })
 
-=======
-const appendNotes = (clients) =>{
-    console.log(clients);
-    clientsList.innerHTML = ``;
-    clients.map((nts)=>{
-       clientsList.innerHTML += 
-        `
-            <div class="card card-body bg-secondary my-3">
-                <div>
-                    <h1>${nts.Nombre}</h1>
-                </div>
-                <div>
-                    <p>${nts.Apellido}</p>
-                </div>
-                <div>
-                    <h1>${nts.Email}</h1>
-                </div>
-                <div>
-                    <h1>${nts.Direccion}</h1>
-                </div>
-                <div>
-                    <h1>${nts.FechaVenc}</h1>
-                </div>
-                <div>
-                    <h1>${nts.Telefono}</h1>
-                </div>
-            </div>
-        `; 
-    })
+    }
     
->>>>>>> da6513eca77b7af9cfec6056dff2bac600de05a3
-}
